@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_students
+    description: "Table de staging des étudiants nettoyée"
+    columns:
+      - name: user_id
+        description: "Identifiant unique de l'étudiant pseudonymisé"
+        tests:
+          - unique    # Vérifie qu'il n'y a pas de doublons
+          - not_null  # Vérifie qu'il n'y a aucune ligne vide
+
+      - name: gender
+        description: "Genre de l'étudiant"
+        tests:
+          - accepted_values: # Vérifie que seules ces 3 valeurs existent
+              values: ['M', 'F', 'Non renseigné']
+
+  - name: mart_students_profiling
+    description: "Table finale prête pour l'analyse"
+    columns:
+      - name: nb_students
+        description: "Nombre d'étudiants comptabilisés"
+        tests:
+          - not_null

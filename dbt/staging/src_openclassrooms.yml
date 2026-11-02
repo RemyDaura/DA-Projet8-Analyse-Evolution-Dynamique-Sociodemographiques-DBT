@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw_openclassrooms
+    database: OC_PROJECT8
+    schema: RAW
+    tables:
+      - name: raw_students
+      - name: raw_insee
